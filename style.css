@@ -1,0 +1,175 @@
+html,
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+h2{
+    margin-left: 150px;
+    color: red;
+}
+/* change img blue */
+/* .my-shape{
+    fill:blue;
+} */
+
+/* change img color when hovering
+  and shrink in size */
+svg:hover .my-shape {
+    fill: blue;
+    transform: scale(.9);
+    /* values of <1 will shrink */
+}
+
+/* smoothly transition */
+.my-shape {
+    transition: all 1.5s;
+}
+
+.buttons{
+    padding: 2px;
+    margin-left: 75px;
+}
+.blue-eyes .eye-color {
+    fill: #175282;
+    /* blue */
+}
+
+.buttons .blue-btn {
+    background-color: #175282;
+    color: white;
+}
+
+.buttons .green-btn {
+    background-color: #1b6811;
+    color: white;
+}
+
+.buttons .sad-btn {
+    background-color: rgb(172, 112, 127);
+    color: white;
+}
+
+.buttons .happy-btn {
+    background-color: rgb(172, 112, 127);
+    color: white;
+}
+
+.buttons .sit-btn {
+    background-color: rgb(112, 150, 172);
+    color: white;
+
+}
+
+.buttons .move-btn {
+    background-color: rgb(112, 150, 172);
+    color: white;
+
+}
+
+/* target the "mouth" class in svg.  */
+.sad .mouth {
+    /* shrink the mouth 
+     the transform origin is always at the top-left
+     **** Find tranform origin ****
+     1. go to inspect and find "mouth" class and highlight
+     2. under inspect:styles (rt-side) .sad .mouth
+     3. add transform-origin 1px (horiz) 1px(vert) to .sad .mouth
+     4. use up-arrow ro shift up-arrow to increas px
+     I found 342x400px with transform: scale(.5)
+     this is what the inspect code look like
+     .sad .mouth {
+         transform: rotate(180deg) scale(.5);
+         transform-origin: 342px 400px;
+     }
+     */
+    transform: rotate(180deg) scale(.5);
+    transform-origin: 342px 390px;
+}
+
+/* in the html the svg class for the pupils is innner-eye-group
+ the <g group consists of the green oval and tiny white circle
+*/
+@keyframes moveEyes {
+    0% {
+        /* begin - move the pupils up and to the left */
+        transform: translate(-20px, -20px);
+    }
+
+    40% {
+        transform: translate(0, 0);
+    }
+
+    65% {
+        /* end - move to the right and back to neutral */
+        transform: translate(15px, -20px);
+    }
+}
+
+.move-around .inner-eye-group {
+    /* add infinite to continue the animation instead of 1 time */
+    animation: moveEyes 5s infinite;
+}
+
+@keyframes leftWhiskers {
+    20% {
+        transform: rotate(5deg);
+    }
+
+    60% {
+        transform: rotate(-5deg);
+    }
+}
+
+.move-around .left-whiskers {
+    animation: leftWhiskers 3s infinite;
+    transform-origin: 300px 300px;
+    /* this is a guess 1st time */
+}
+
+@keyframes rightWhiskers {
+    5% {
+        transform: rotate(-2deg);
+    }
+
+    90% {
+        transform: rotate(7deg);
+    }
+}
+
+.move-around .right-whiskers {
+    animation: rightWhiskers 3s infinite;
+    transform-origin: 300px 300px;
+    /* this is a guess 1st time */
+}
+
+@keyframes move {
+    20% {
+        transform: rotateX(10deg) rotateY(10deg);
+
+    }
+
+    40% {
+        transform: rotateX(10deg) rotateY(25deg);
+
+    }
+
+    60% {
+        transform: rotateX(-10deg) rotateY(-10deg);
+
+    }
+       85% {
+           transform: rotateX(-16deg) rotateY(-10deg);
+
+       }
+
+
+}
+
+.move-around {
+    animation: move 8s infinite;
+}
+
+.svg-container{
+    perspective: 1000px;
+}
